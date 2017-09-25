@@ -1,0 +1,2 @@
+#Convert Bam to Fasta
+samtools view filename.bam | awk '{OFS="\t"; print ">"$1"\n"$10}' > filename.fasta
