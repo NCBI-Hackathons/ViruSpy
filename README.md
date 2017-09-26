@@ -2,7 +2,7 @@
 
 ## Goal
 
-To identify viral gene sequences and even full virus genomes from metagenomic sequencing data available in NCBI's SRA database. To determine if viruses are integrated into a host genome.
+To identify viral gene sequences and even full virus genomes from metagenomic sequencing data available in NCBI's SRA database. To determine if viruses are non-native (i.e. integrated) to a host genome.
 
 ## Why this is important?
 
@@ -22,7 +22,8 @@ Virusspace first gathers refseq viral genomes or uses a user supplied fasta, or 
 
 ![alt text](https://github.com/NCBI-Hackathons/VirusCore/blob/master/Slide2.jpg "Obtaining SRA Data and BLAST Databases")
 
-The BUD algorithm is shown below. The viral contigs are extended by iterative MagicBLAST against
+The identification of viral sequences in host genomes relies upon the Building Up Domains (BUD) algorithm. BUD takes as input an identified viral contig from a metagenomics dataset and it runs the two ends of the identified contig through MagicBLAST to find overlapping reads. These reads are then used to extend the contig in both directions. This process can continue until non-viral domains are identified on either side of the original viral contig, implying that the original contig was endogenous in the host. This process is depicted below:
+
 ![alt text](https://github.com/NCBI-Hackathons/VirusCore/blob/master/BUD.png "Building up domains algorithm")
 
 ### Magic-BLAST
