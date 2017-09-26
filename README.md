@@ -11,15 +11,15 @@ Virusspace first gathers refseq viral genomes or uses a user supplied fasta, or 
 
 # Magic-BLAST
 
-[I'm an inline-style link](https://github.com/boratyng/magicblast)
-[I'm an inline-style link](https://ncbiinsights.ncbi.nlm.nih.gov/2016/10/13/introducing-magic-blast/)
+[Magic-BLAST GitHub repo](https://github.com/boratyng/magicblast)
+[Magic-BLAST NCBI Insights](https://ncbiinsights.ncbi.nlm.nih.gov/2016/10/13/introducing-magic-blast/)
 
 The pipeline starts with Magic-BLAST leveraging this tools ability to access SRA data without downloading any large files. A SAM file is generated which is then converted to a FASTQ file for downstream use with MEGAHIT.
 
 # MEGAHIT
 
-[I'm an inline-style link](https://github.com/voutcn/megahit)
-[I'm an inline-style link](https://www.ncbi.nlm.nih.gov/pubmed/25609793)
+[MEGAHIT GitHub repot](https://github.com/voutcn/megahit)
+[MEGAHIT Paper](https://www.ncbi.nlm.nih.gov/pubmed/25609793)
 
 The MEGAHIT assembler is a succinct desbrun graph based genome assembler that we used to generate contigs from the Magic-BLAST results.
 
@@ -29,9 +29,9 @@ Protein domains were identified in the contigs using both PSSM and HMM methods.
 
 # Glimmer3
 
-[I'm an inline-style link](https://ccb.jhu.edu/software/glimmer/)
-[I'm an inline-style link](https://ccb.jhu.edu/papers/glimmer3.pdf)
-[I'm an inline-style link](https://ccb.jhu.edu/software/glimmer/glim302notes.pdf)
+[Glimmer3 Page at JHU](https://ccb.jhu.edu/software/glimmer/)
+[Glimmer3 Paper](https://ccb.jhu.edu/papers/glimmer3.pdf)
+[Glimmer3 manual/notes PDF](https://ccb.jhu.edu/software/glimmer/glim302notes.pdf)
 
 Glimmer3 was used to identify putative open reading frames in the contigs.
 
