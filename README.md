@@ -21,6 +21,7 @@ In addition, VirusSpy attempts to extend the viral contigs with host reads by an
 Virusspace first gathers refseq viral genomes or uses a user supplied fasta, or BLAST database. The SRA file is selected to search for viruses in and the BLAST database is selected so that we use it in conjunction with Magic-BLAST to find putative viral reads.
 
 ![alt text](https://github.com/NCBI-Hackathons/VirusCore/blob/master/Slide2.jpg "Obtaining SRA Data and BLAST Databases")
+![alt text](https://github.com/NCBI-Hackathons/VirusCore/blob/master/BUD.png "Building up domains algorithm")
 
 ### Magic-BLAST
 
