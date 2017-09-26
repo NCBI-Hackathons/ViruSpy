@@ -21,6 +21,8 @@ In addition, VirusSpy attempts to extend the viral contigs with host reads by an
 Virusspace first gathers refseq viral genomes or uses a user supplied fasta, or BLAST database. The SRA file is selected to search for viruses in and the BLAST database is selected so that we use it in conjunction with Magic-BLAST to find putative viral reads.
 
 ![alt text](https://github.com/NCBI-Hackathons/VirusCore/blob/master/Slide2.jpg "Obtaining SRA Data and BLAST Databases")
+
+The BUD algorithm is shown below. The viral contigs are extended by iterative MagicBLAST against
 ![alt text](https://github.com/NCBI-Hackathons/VirusCore/blob/master/BUD.png "Building up domains algorithm")
 
 ### Magic-BLAST
@@ -41,11 +43,7 @@ The MEGAHIT assembler is a succinct desbrun graph based genome assembler that we
 
 ### Protein Domain Identification
 
-Protein domains were identified using NCBI's RPS-tBLASTn. 
-
-[BLAST Command Line Manual](https://www.ncbi.nlm.nih.gov/books/NBK279690/)
-
-[NCBI Conserved Domain and Protein Classification](https://www.ncbi.nlm.nih.gov/Structure/cdd/cdd_help.shtml)
+Protein domains were identified in the contigs using both PSSM and HMM methods. 
 
 ### Glimmer3
 
@@ -63,7 +61,7 @@ Glimmer3 was used to identify putative open reading frames in the contigs.
 
 ## ViruSpace Usage
 
-viruspy.sh -srr SRR123456 -f/-b viral.refseq -out output_folder
+viruspy.sh [-d] -srr SRR123456 -f/-b viral.refseq -out output_folder
 
 #### -srr
 
@@ -76,6 +74,10 @@ viruspy.sh -srr SRR123456 -f/-b viral.refseq -out output_folder
 #### -b 
 
   BLAST database with viral sequences to be used with Magic-BLAST
+
+#### -d
+   
+  Determine viruses signatures that are integrated into a host genome (runs the BUD algorithm)
 
 #### -out
 
