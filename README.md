@@ -43,6 +43,10 @@ The MEGAHIT assembler is a succinct desbrun graph based genome assembler that we
 
 Protein domains were identified using NCBI's RPS-tBLASTn. 
 
+[BLAST Command Line Manual](https://www.ncbi.nlm.nih.gov/books/NBK279690/)
+
+[NCBI Conserved Domain and Protein Classification](https://www.ncbi.nlm.nih.gov/Structure/cdd/cdd_help.shtml)
+
 ### Glimmer3
 
 [Glimmer3 Page at JHU](https://ccb.jhu.edu/software/glimmer/)
