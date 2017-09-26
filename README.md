@@ -50,7 +50,13 @@ Glimmer3 was used to identify putative open reading frames in the contigs.
 
 ![alt text](https://github.com/NCBI-Hackathons/VirusCore/blob/master/Slide3.jpg "The Pipeline")
 
+## Installing ViruSpace
 
+## ViruSpace Usage
+
+## ViruSpace Testing and Validation
+
+## Additional Functionality
 
 
 
