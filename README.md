@@ -56,17 +56,11 @@ Glimmer3 was used to identify putative open reading frames in the contigs.
 
 viruspy.sh -srr SRR123456 -f/-b viral.refseq -out output_folder
 
-#### -srr
+#### -srr               SRR acession number from SRA database
 
-  SRR acession number from SRA database
+#### -f                 FASTA file containing viral sequences to be used in construction of a BLAST database
 
-#### -f 
-
-  FASTA file containing viral sequences to be used in construction of a BLAST database
-
-#### -b 
-
-  BLAST database with viral sequences to be used with Magic-BLAST
+#### -b                 BLAST database with viral sequences to be used with Magic-BLAST
 
 #### -out
 
