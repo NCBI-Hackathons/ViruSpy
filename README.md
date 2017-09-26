@@ -54,14 +54,23 @@ Glimmer3 was used to identify putative open reading frames in the contigs.
 
 ## ViruSpace Usage
 
-viruspy.sh -srr SRR123456 -vdb viral.refseq -out output_folder
+viruspy.sh -srr SRR123456 -f/-b viral.refseq -out output_folder
 
-##### -srr 
-  SRR number from SRA database
+#### -srr
 
-##### - vdb 
-  
+  SRR acession number from SRA database
 
+#### -f 
+
+  FASTA file containing viral sequences to be used in construction of a BLAST database
+
+#### -b 
+
+  BLAST database with viral sequences to be used with Magic-BLAST
+
+#### -out
+
+  Specify a folder to 
 
 ## ViruSpace Testing and Validation
 
