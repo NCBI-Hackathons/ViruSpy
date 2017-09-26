@@ -12,6 +12,7 @@ Virusspace first gathers refseq viral genomes or uses a user supplied fasta, or 
 # Magic-BLAST
 
 [Magic-BLAST GitHub repo](https://github.com/boratyng/magicblast)
+
 [Magic-BLAST NCBI Insights](https://ncbiinsights.ncbi.nlm.nih.gov/2016/10/13/introducing-magic-blast/)
 
 The pipeline starts with Magic-BLAST leveraging this tools ability to access SRA data without downloading any large files. A SAM file is generated which is then converted to a FASTQ file for downstream use with MEGAHIT.
