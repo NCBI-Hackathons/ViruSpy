@@ -2,15 +2,19 @@
 
 ## Goal
 
-To identify viral gene sequences and even full virus genomes from metagenomic sequencing data available in NCBI's SRA database
+To identify viral gene sequences and even full virus genomes from metagenomic sequencing data available in NCBI's SRA database. To determine if viruses are integrated into a host genome.
 
-## Why is this important?
+## Why this is important?
 
 Viruses compose a large amount of the genomic biodiversity on the planet, but only a small fraction of the viruses that exist are known. To help fill this gap in knowledge we have produced a pipeline that can identify putative viral sequences from large scale metagenomic datasets that already exist in the SRA database.
 
+Viruses across multiple virus families are found integrated in host genomes. The genes that are integrated depends upon the specific viral integration. Sometimes the integration event is a complete genome or partial genome.
+
 ## What is ViruSpy?
 
-ViruSpy is a program for identiying viral genes and genomes from metagenomic datasets. This pipeline first obtains a set of reference sequences from the NCBI Viral RefSeq server, or as input from the user, and constructs a BLAST index. Next it runs Magic-BLAST on a user specified file from the SRA database. Magic-BLAST is used here to obtain all the virus-like sequences from a metagenomic sample for use with MegaHit, succinct desbrun graph based genome assembly software. Contigs built by MegaBlast are then ran through Glimmer3 to predict open reading frames and Hammer/RPST-BLASTn to predict conserved protein domains. Output files from both of these methods are combined to identify a high confidence set of viral contigs. 
+ViruSpy is a program for identiying viral genes and genomes from metagenomic datasets. This pipeline first obtains a set of reference sequences from the NCBI Viral RefSeq server, or as input from the user, and constructs a BLAST database. Next it runs [Magic-BLAST](https://ncbi.github.io/magicblast/) to align reads from an SRA library to the BLAST database. Magic-BLAST is used here to obtain all the virus-like sequences from a metagenomic sample for use with MegaHit, succinct De Bruin graph based genome assembly software. Contigs built by MegaHit are then run through Glimmer3 to predict open reading frames and HMMER/RPS-BLASTn to predict conserved protein domains. Output files from both of these methods are combined to identify a high confidence set of viral contigs.
+
+In addition, VirusSpy attempts to extend the viral contigs with host reads by an iterative process that we call BUD: building up domains. The BUDing process 
 
 ## Workflow 
 
@@ -54,23 +58,23 @@ Glimmer3 was used to identify putative open reading frames in the contigs.
 
 ## ViruSpace Usage
 
-viruspy.sh -srr [SRR123456] -f/-b [viral.fa/viral.db] -out [output_folder]
+viruspy.sh -srr SRR123456 -f/-b viral.refseq -out output_folder
 
 #### -srr
 
-SRR acession number from SRA database
+  SRR acession number from SRA database
 
-#### -f
+#### -f 
 
-FASTA file containing viral sequences to be used in construction of a BLAST database
+  FASTA file containing viral sequences to be used in construction of a BLAST database
 
-#### -b
+#### -b 
 
-BLAST database with viral sequences to be used with Magic-BLAST
+  BLAST database with viral sequences to be used with Magic-BLAST
 
 #### -out
 
-  Specify a folder to output data into
+  Specify a folder to 
 
 ## ViruSpace Testing and Validation
 
