@@ -54,6 +54,15 @@ Glimmer3 was used to identify putative open reading frames in the contigs.
 
 ## ViruSpace Usage
 
+viruspy.sh -srr SRR123456 -vdb viral.refseq -out output_folder
+
+##### -srr 
+  SRR number from SRA database
+
+##### - vdb 
+  
+
+
 ## ViruSpace Testing and Validation
 
 ## Additional Functionality
