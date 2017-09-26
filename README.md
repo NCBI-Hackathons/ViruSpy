@@ -5,4 +5,6 @@ ViruSpy obtains a set of reference sequences from the NCBI Viral RefSeq server, 
 
 ![alt text](https://github.com/NCBI-Hackathons/VirusCore/blob/master/Slide2.jpg "Obtaining SRA Data and BLAST Databases")
 
+![alt text](https://github.com/NCBI-Hackathons/VirusCore/blob/master/Slide3.jpg "The Pipeline")
+
 
