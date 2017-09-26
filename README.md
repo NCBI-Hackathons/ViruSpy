@@ -41,7 +41,7 @@ The MEGAHIT assembler is a succinct desbrun graph based genome assembler that we
 
 ### Protein Domain Identification
 
-Protein domains were identified in the contigs using both PSSM and HMM methods. 
+Protein domains were identified using NCBI's RPS-tBLASTn. 
 
 ### Glimmer3
 
