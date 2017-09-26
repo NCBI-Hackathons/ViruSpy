@@ -9,8 +9,6 @@ Virusspace first gathers refseq viral genomes or uses a user supplied fasta, or 
 
 ![alt text](https://github.com/NCBI-Hackathons/VirusCore/blob/master/Slide2.jpg "Obtaining SRA Data and BLAST Databases")
 
-![alt text](https://github.com/NCBI-Hackathons/VirusCore/blob/master/Slide3.jpg "The Pipeline")
-
 # Magic-BLAST
 
 The pipeline starts with Magic-BLAST leveraging this tools ability to access SRA data without downloading any large files. A SAM file is generated which is then converted to a FASTQ file for downstream use with MEGAHIT.
@@ -18,3 +16,7 @@ The pipeline starts with Magic-BLAST leveraging this tools ability to access SRA
 # MEGAHIT
 
 The MEGAHIT assembler is used to generate contigs from the 
+
+![alt text](https://github.com/NCBI-Hackathons/VirusCore/blob/master/Slide3.jpg "The Pipeline")
+
+
