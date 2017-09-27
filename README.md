@@ -2,7 +2,7 @@
 
 ## Goal
 
-To identify viral gene sequences and even full virus genomes from metagenomic sequencing data available in NCBI's SRA database. To determine if viruses are non-native (i.e. integrated) to a host genome.
+ViruSpy identifies viral gene sequences and even full virus genomes from metagenomic sequencing data available in NCBI's SRA database. From these, ViruSpy determines whether the viral sequences are non-native (i.e. integrated) to a host genome.
 
 ## Why this is important?
 
@@ -18,7 +18,9 @@ In addition, VirusSpy attempts to extend the viral contigs with host reads by an
 
 # Workflow 
 
-Virusspace first gathers refseq viral genomes or uses a user supplied fasta, or BLAST database. The SRA file is selected to search for viruses in and the BLAST database is selected so that we use it in conjunction with Magic-BLAST to find putative viral reads.
+ViruSpy gathers reference viral genomes through either a user-supplied FASTA file or BLAST database. Reads from the SRA ID provided are searched against this database using Magic-BLAST to find putative viral reads.
+
+For convenience, a utility (LINK) has been provided to download the most recent release of RefSeq viral genomes from NCBI. The resulting FASTA file can be used as the reference file for ViruSpy.
 
 ![alt text](https://github.com/NCBI-Hackathons/VirusCore/blob/master/Slide2.jpg "Obtaining SRA Data and BLAST Databases")
 
