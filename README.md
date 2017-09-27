@@ -4,7 +4,8 @@
 
 [What is ViruSpy?](#intro)    
 [Why is this important?](#importance)    
-[ViruSpy Workflow](#workflow)    
+[ViruSpy Workflow](#workflow)
+[Quickstart](#quickstart)
 [Installing ViruSpy](#install)    
 [ViruSpy Usage](#usage)    
 [ViruSpy Testing and Validation](#testing_and_validation)    
@@ -68,7 +69,7 @@ Using the identified viral reads, the determination of endogenous reads within a
 
 ## <a name="install"></a>Installing ViruSpy
 
-## <a name="usage"></a>ViruSpy Usage
+## <a name="usage"></a><a name="quickstart"></a>ViruSpy Usage
 
 #### Example usage
 
@@ -94,15 +95,3 @@ viruspy.sh [-d] [-f viral_genomes.fasta/-b viral_db] -srr SRR123456 -out output_
 ## <a name="testing_and_validation"></a>ViruSpy Testing and Validation
 
 ## <a name="additional"></a>Additional Functionality
-
-
-
-
-
-
-
-
-
-
-
-
