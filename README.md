@@ -12,11 +12,13 @@ Viruses across multiple virus families are found integrated in host genomes. By 
 
 ## ViruSpy Workflow
 
-![alt text](https://github.com/NCBI-Hackathons/VirusCore/blob/master/Workflow_Diagram.JPG "Workflow Overview")
+![alt text](https://github.com/NCBI-Hackathons/VirusCore/blob/master/input.png "ViruSpy input")
 
-ViruSpy gathers reference viral genomes through either a user-supplied FASTA file or BLAST database. If neither is given, ViruSpy will default to the RefSeq viral genome database and attempt to download those sequences in FASTA format. Reads from the provided SRA ID are searched against this database using Magic-BLAST to find putative viral reads.
+The user needs to provide the SRA ID of the metagenomic sample to be searched through and a reference viral genome database. The reference viral genome database can be either supplied to the ViruSpy by user in form of FASTA file or BLAST database, or if neither is provided, ViruSpy will default to the RefSeq viral genome database and attempt to download those sequences in FASTA format. 
 
 For convenience, a [utility](https://github.com/NCBI-Hackathons/VirusCore/blob/master/get_refseq_viral_seqs.sh) has been provided to download the most recent release of RefSeq viral genomes from NCBI. The resulting FASTA file can be used as the reference file for ViruSpy.
+
+![alt text](https://github.com/NCBI-Hackathons/VirusCore/blob/master/Workflow_Diagram.JPG "Workflow Overview")
 
 Once Magic-BLAST returns all of the virus-like sequences in the SRA sample, they are assembled into contigs using the MEGAHIT assembler.
 
