@@ -37,6 +37,8 @@ Using the identified viral reads, the determination of endogenous reads within a
 
 ![alt text](https://github.com/NCBI-Hackathons/VirusCore/blob/master/BUD.png "Building up domains algorithm")
 
+### References
+
 ### Magic-BLAST
 
 [BLAST Command Line Manual](https://www.ncbi.nlm.nih.gov/books/NBK279690/)
