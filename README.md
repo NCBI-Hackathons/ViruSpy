@@ -66,27 +66,18 @@ viruspy.sh [-d] -srr SRR123456 [-f viral_genomes.fasta/-b viral_db] -out output_
 
 #### Required arguments:
 
-  #### -srr
-    SRR acession number from SRA database
-  
-
-  #### -out
-
-    Specify a folder to be used for pipeline output
+| Option     | Description                                     |
+|------------|-------------------------------------------------|
+| **-srr**   | SRR acession number from SRA database           |
+| **-out**   | Specify a folder to be used for pipeline output |
 
 #### Optional arguments:
 
-  #### -f 
-
-    FASTA file containing viral sequences to be used in construction of a BLAST database. If neither this argument nor -b are used, ViruSpy will default to using the Refseq viral genome database.
-
-  #### -b 
-
-    BLAST database with viral sequences to be used with Magic-BLAST. If neither this argument nor -f are used, ViruSpy will default to using the Refseq viral genome database.
-
-  #### -d
-  
-    Determine viruses signatures that are integrated into a host genome (runs the BUD algorithm)
+| Option    | Description |
+|-----------|-------------|
+| **-f**    |FASTA file containing viral sequences to be used in construction of a BLAST database. If neither this argument nor -b are used, ViruSpy will default to using the Refseq viral genome database.|
+| **-b**    |BLAST database with viral sequences to be used with Magic-BLAST. If neither this argument nor -f are used, ViruSpy will default to using the Refseq viral genome database.|
+| **-d**    |Determines signature of viruses that are integrated into a host genome (runs the BUD algorithm)|
 
 ## ViruSpy Testing and Validation
 
