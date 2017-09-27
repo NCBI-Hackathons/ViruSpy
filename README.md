@@ -2,30 +2,30 @@
 
 ## What is ViruSpy?
 
-ViruSpy is a pipeline designed for virus discovery from metagenomic sequencing data available in NCBI’s SRA database. The first step lies in identification of viral reads in the metagenomic sample with Magic-BLAST, which allows this step without the need for downloading the metagenomic dataset to the local computer. The extracted raw reads are assembled into contigs by use of MEGAHIT and annotated for genes by Glimmer and for conserved domains by RPS-TBLASTN. Following integration of Building Up Domains (BUD) algorithms allows to whether the viral genomes are non-native (i.e. integrated) to a host genome.
+ViruSpy is a pipeline designed for virus discovery from metagenomic sequencing data available in NCBI’s SRA database. The first step identifies viral reads in the metagenomic sample with Magic-BLAST, which allows this step without needing to download the (often quite large) metagenomic dataset. The extracted raw reads are assembled into contigs using MEGAHIT and annotated for genes by Glimmer and for conserved domains by RPS-TBLASTN. Following annotation, the Building Up Domains (BUD) algorithm allows us to tell whether the viral genomes are non-native (i.e. integrated) to a host genome.
 
 ## Why is this important?
 
 Viruses compose a large amount of the genomic biodiversity on the planet, but only a small fraction of the viruses that exist are known. To help fill this gap in knowledge we created a pipeline that can identify putative viral sequences from large scale metagenomic datasets that already exist in the SRA database.
 
-Viruses across multiple virus families are found integrated in host genomes. By including the BUD algorith to the pipeline, we are able to identify these integratd viruses and its host genomes.
+Viruses across multiple virus families are found integrated in host genomes. By including the BUD algorith in the pipeline, we are able to identify these and distinguish them from exogenous viruses.
 
 ## ViruSpy Workflow
 
-The ViruuSpy requires user to provide the SRA ID of the metagenomic sample to be searched through and a reference viral genome database. The reference viral genome database can be either supplied to the ViruSpy by user in form of FASTA file or BLAST database, or if neither is provided, ViruSpy will default to the RefSeq viral genome database and attempt to download those sequences in FASTA format. 
+The ViruSpy pipeline requires the user to provide the SRA ID of the metagenomic sample to be searched through and a reference viral genome database. The reference viral genome database can be either supplied by the user in the form of a FASTA file or BLAST database. If neither is provided, ViruSpy will default to the RefSeq viral genome database and attempt to download those sequences in FASTA format. 
 
-For convenience, a [utility](https://github.com/NCBI-Hackathons/VirusCore/blob/master/get_refseq_viral_seqs.sh) has been provided to download the most recent release of RefSeq viral genomes from NCBI. The resulting FASTA file can be used as the reference file for ViruSpy.
 <img src="https://github.com/NCBI-Hackathons/VirusCore/blob/master/input.png" height="400" width="550">
 
-In the first step Magic-BLAST returns all of the virus-like sequences from the SRA sample, which in the second part assembled into contigs using the MEGAHIT assembler.
+In the first step Magic-BLAST returns all of the virus-like sequences from the SRA sample, which are then assembled into contigs using the MEGAHIT assembler.
 
-In the thrid part the contigs are verified as viral sequences through two methods: by Glimmer3 prediction of open reading frames within the contigs, and by RPS-TBLASTN prediction of conserved protein domains. The viral conserved domains (CD)have been determined based upon the NCBI CDD database. Output files from both of these methods are then combined to identify a set of high confidence viral contigs. 
+The contigs are verified as viral sequences through two methods: prediction of open reading frames within the contigs using Glimmer3, and prediction of conserved protein domains using RPS-tBLASTn. The viral conserved domains (CD) are determined using the NCBI CDD database. Output files from both of these methods are then combined to identify a set of high confidence viral contigs. 
 
 <img src="https://github.com/NCBI-Hackathons/VirusCore/blob/master/Workflow_Diagram.JPG" height="450" width="650">
 
 Using the identified viral reads, the determination of endogenous reads within a host relies upon the Building Up Domains (BUD) algorithm. BUD takes as input an identified peprocessed viral contig from a metagenomics dataset and feeds the contig ends from both sides to Magic-BLAST, which searches for overlapping reads in the SRA dataset. The reads are then used to extend the contig in both directions. This process continues until non-viral domains are identified on either side of the original viral contig, implying that the original contig was endogenous in the host, or until a specified number of iterations has been reached (default iteration value was set to 10). This process is depicted below:
 
 <img src="https://github.com/NCBI-Hackathons/VirusCore/blob/master/BUD_Algorithm.JPG" height="400" width="600">
+
 ### Useful References
 
 #### Magic-BLAST
