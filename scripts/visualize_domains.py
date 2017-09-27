@@ -1,6 +1,7 @@
 from subprocess import call
 import sys, inspect
 import csv
+import math
 import matplotlib as mpl
 mpl.use('Agg')
 import matplotlib.pyplot as ptl
@@ -45,7 +46,7 @@ if(db_name=="Pfam"):
 else:
 	protein = 0
 numSequences = 0
-constantFont = 0.06
+constantFont = 18
 constantWidth = 0.005
 temp = ""
 figure(1,figsize = (6,11))
@@ -111,7 +112,7 @@ with open(query_file, 'r') as myfile:
 			lengths.update({nam:len(data)})
 			
 numSequences = len(set(contig))
-fontsize = constantFont*numSequences*numSequences
+fontsize = constantFont*1/(math.log(numSequences,2))
 namCount = 1
 if count>0:
 	for n in set(contig):
