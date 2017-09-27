@@ -62,7 +62,7 @@ Using the identified viral reads, the determination of endogenous reads within a
 
 #### Example usage
 
-viruspy.sh [-d] -srr SRR123456 [-f viral_genomes.fasta/-b viral_db] -out output_folder
+viruspy.sh [-d] [-f viral_genomes.fasta/-b viral_db] -srr SRR123456 -out output_folder
 
 #### Required arguments:
 
