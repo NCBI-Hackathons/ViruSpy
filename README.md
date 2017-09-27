@@ -22,6 +22,9 @@ Virusspace first gathers refseq viral genomes or uses a user supplied fasta, or 
 
 ![alt text](https://github.com/NCBI-Hackathons/VirusCore/blob/master/Slide2.jpg "Obtaining SRA Data and BLAST Databases")
 
+
+![alt text](https://github.com/NCBI-Hackathons/VirusCore/blob/master/Slide3.jpg "The Pipeline")
+
 The identification of viral sequences in host genomes relies upon the Building Up Domains (BUD) algorithm. BUD takes as input an identified viral contig from a metagenomics dataset and it runs the two ends of the identified contig through MagicBLAST to find overlapping reads. These reads are then used to extend the contig in both directions. This process can continue until non-viral domains are identified on either side of the original viral contig, implying that the original contig was endogenous in the host. This process is depicted below:
 
 ![alt text](https://github.com/NCBI-Hackathons/VirusCore/blob/master/BUD.png "Building up domains algorithm")
@@ -55,15 +58,14 @@ Protein domains were identified using NCBI's RPS-tBLASTn.
 
 ### Glimmer3
 
+Glimmer3 was used to identify putative open reading frames in the contigs.
+
 [Glimmer3 Page at JHU](https://ccb.jhu.edu/software/glimmer/)
 
 [Glimmer3 Paper](https://ccb.jhu.edu/papers/glimmer3.pdf)
 
 [Glimmer3 manual/notes PDF](https://ccb.jhu.edu/software/glimmer/glim302notes.pdf)
 
-Glimmer3 was used to identify putative open reading frames in the contigs.
-
-![alt text](https://github.com/NCBI-Hackathons/VirusCore/blob/master/Slide3.jpg "The Pipeline")
 
 ## Installing ViruSpy
 
