@@ -24,7 +24,7 @@ ViruSpy gathers reference viral genomes through either a user-supplied FASTA fil
 
 For convenience, a [utility](https://github.com/NCBI-Hackathons/VirusCore/blob/master/get_refseq_viral_seqs.sh) has been provided to download the most recent release of RefSeq viral genomes from NCBI. The resulting FASTA file can be used as the reference file for ViruSpy.
 
-Once Magic-BLAST returns all of the virus-like sequences in the SRA sample, these sequences are assembled into contigs using the MEGAHIT software.
+Once Magic-BLAST returns all of the virus-like sequences in the SRA sample, they are assembled into contigs using the MEGAHIT software.
 
 Contigs are verified as viral sequences through two methods: Glimmer3 predicts open reading frames within the contigs and RPS-tBLASTn predicts conserved protein domains. Output files from both of these methods are combined to identify a set of high confidence viral contigs.
 
