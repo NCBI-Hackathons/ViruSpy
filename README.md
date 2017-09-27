@@ -28,6 +28,8 @@ The identification of viral sequences in host genomes relies upon the Building U
 
 ### Magic-BLAST
 
+[BLAST Command Line Manual](https://www.ncbi.nlm.nih.gov/books/NBK279690/)
+
 [Magic-BLAST GitHub repo](https://github.com/boratyng/magicblast)
 
 [Magic-BLAST NCBI Insights](https://ncbiinsights.ncbi.nlm.nih.gov/2016/10/13/introducing-magic-blast/)
@@ -44,7 +46,12 @@ The MEGAHIT assembler is a succinct desbrun graph based genome assembler that we
 
 ### Protein Domain Identification
 
-Protein domains were identified in the contigs using both PSSM and HMM methods. 
+Protein domains were identified using NCBI's RPS-tBLASTn.
+
+[BLAST Command Line Manual](https://www.ncbi.nlm.nih.gov/books/NBK279690/)
+
+[NCBI Conserved Domain and Protein Classification](https://www.ncbi.nlm.nih.gov/Structure/cdd/cdd_help.shtml)
+
 
 ### Glimmer3
 
