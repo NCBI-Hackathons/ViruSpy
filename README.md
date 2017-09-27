@@ -41,7 +41,7 @@ The pipeline starts with Magic-BLAST leveraging this tools ability to access SRA
 
 ### MEGAHIT
 
-[MEGAHIT GitHub repot](https://github.com/voutcn/megahit)
+[MEGAHIT GitHub repo](https://github.com/voutcn/megahit)
 
 [MEGAHIT Paper](https://www.ncbi.nlm.nih.gov/pubmed/25609793)
 
