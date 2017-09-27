@@ -60,27 +60,33 @@ Using the identified viral reads, the determination of endogenous reads within a
 
 ## ViruSpy Usage
 
-viruspy.sh [-d] -srr SRR123456 -f/-b viral.refseq -out output_folder
+#### Example usage
 
-#### -srr
+viruspy.sh [-d] -srr SRR123456 [-f viral_genomes.fasta/-b viral_db] -out output_folder
 
-  SRR acession number from SRA database
+#### Required arguments:
 
-#### -f 
+  #### -srr
+    SRR acession number from SRA database
+  
 
-  FASTA file containing viral sequences to be used in construction of a BLAST database
+  #### -out
 
-#### -b 
+    Specify a folder to be used for pipeline output
 
-  BLAST database with viral sequences to be used with Magic-BLAST
+#### Optional arguments:
 
-#### -d
-   
-  Determine viruses signatures that are integrated into a host genome (runs the BUD algorithm)
+  #### -f 
 
-#### -out
+    FASTA file containing viral sequences to be used in construction of a BLAST database. If neither this argument nor -b are used, ViruSpy will default to using the Refseq viral genome database.
 
-  Specify a folder to 
+  #### -b 
+
+    BLAST database with viral sequences to be used with Magic-BLAST. If neither this argument nor -f are used, ViruSpy will default to using the Refseq viral genome database.
+
+  #### -d
+  
+    Determine viruses signatures that are integrated into a host genome (runs the BUD algorithm)
 
 ## ViruSpy Testing and Validation
 
