@@ -20,7 +20,7 @@ In addition, VirusSpy attempts to extend the viral contigs with host reads by an
 
 ## Workflow
 
-ViruSpy gathers reference viral genomes through either a user-supplied FASTA file or BLAST database. Reads from the provided SRA ID are searched against this database using Magic-BLAST to find putative viral reads.
+ViruSpy gathers reference viral genomes through either a user-supplied FASTA file or BLAST database. If neither is given, ViruSpy will default to the RefSeq viral genome database and attempt to download those sequences in FASTA format. Reads from the provided SRA ID are searched against this database using Magic-BLAST to find putative viral reads.
 
 For convenience, a [utility](https://github.com/NCBI-Hackathons/VirusCore/blob/master/get_refseq_viral_seqs.sh) has been provided to download the most recent release of RefSeq viral genomes from NCBI. The resulting FASTA file can be used as the reference file for ViruSpy.
 
