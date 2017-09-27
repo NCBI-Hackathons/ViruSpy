@@ -29,8 +29,6 @@ Using the identified viral reads, the determination of endogenous reads within a
 
 ### Magic-BLAST
 
-The pipeline starts with Magic-BLAST leveraging this tools ability to access SRA data without downloading any large files. A SAM file is generated which is then converted to a FASTQ file for downstream use with MEGAHIT.
-
 [BLAST Command Line Manual](https://www.ncbi.nlm.nih.gov/books/NBK279690/)
 
 [Magic-BLAST GitHub repo](https://github.com/boratyng/magicblast)
@@ -39,23 +37,17 @@ The pipeline starts with Magic-BLAST leveraging this tools ability to access SRA
 
 ### MEGAHIT
 
-The MEGAHIT assembler is a succinct de Bruijn graph-based genome assembler that is used to generate contigs from the viral reads derived from Magic-BLAST.
-
 [MEGAHIT GitHub repo](https://github.com/voutcn/megahit)
 
 [MEGAHIT Paper](https://www.ncbi.nlm.nih.gov/pubmed/25609793)
 
 ### Protein Domain Identification
 
-Protein domains were identified using NCBI's RPS-tBLASTn.
-
 [BLAST Command Line Manual](https://www.ncbi.nlm.nih.gov/books/NBK279690/)
 
 [NCBI Conserved Domain and Protein Classification](https://www.ncbi.nlm.nih.gov/Structure/cdd/cdd_help.shtml)
 
 ### Glimmer3
-
-Glimmer3 was used to identify putative open reading frames in the contigs.
 
 [Glimmer3 Page at JHU](https://ccb.jhu.edu/software/glimmer/)
 
@@ -64,8 +56,6 @@ Glimmer3 was used to identify putative open reading frames in the contigs.
 [Glimmer3 manual/notes PDF](https://ccb.jhu.edu/software/glimmer/glim302notes.pdf)
 
 ## BUD Algorithm
-
-The BUD algorithm is used to extend contigs that possess viral domains for the purpose of identifying host genome integration sites
 
 # Installing ViruSpy
 
