@@ -10,7 +10,7 @@ Viruses compose a large amount of the genomic biodiversity on the planet, but on
 
 Viruses across multiple virus families are found integrated in host genomes. The genes that are integrated depends upon the specific viral integration. Sometimes the integration event is a complete genome or partial genome.
 
-## Workflow
+## ViruSpy Workflow
 
 ![alt text](https://github.com/NCBI-Hackathons/VirusCore/blob/master/Workflow_Diagram.JPG "Workflow Overview")
 
