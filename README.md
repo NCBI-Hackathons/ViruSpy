@@ -55,7 +55,7 @@ The pipeline starts with Magic-BLAST leveraging this tools ability to access SRA
 
 [MEGAHIT Paper](https://www.ncbi.nlm.nih.gov/pubmed/25609793)
 
-The MEGAHIT assembler is a succinct desbrun graph based genome assembler that we used to generate contigs from the Magic-BLAST results.
+The MEGAHIT assembler is a succinct de Bruijn graph-based genome assembler that is used to generate contigs from the viral reads derived from Magic-BLAST.
 
 ### Protein Domain Identification
 
