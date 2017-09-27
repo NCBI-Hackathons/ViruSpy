@@ -3,7 +3,7 @@
 ## Table of Contents
 
 [What is ViruSpy?](#intro)    
-[Why is This Important?](#importance)    
+[Why is this important?](#importance)    
 [ViruSpy Workflow](#workflow)    
 [Installing ViruSpy](#install)    
 [ViruSpy Usage](#usage)    
