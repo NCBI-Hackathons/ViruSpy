@@ -6,7 +6,7 @@ ViruSpy is a pipeline that identifies viral gene sequences and even full virus g
 
 ## Why is this important?
 
-Viruses compose a large amount of the genomic biodiversity on the planet, but only a small fraction of the viruses that exist are known. To help fill this gap in knowledge we have produced a pipeline that can identify putative viral sequences from large scale metagenomic datasets that already exist in the SRA database.
+Viruses compose a large amount of the genomic biodiversity on the planet, but only a small fraction of the viruses that exist are known. To help fill this gap in knowledge we have created a pipeline that can identify putative viral sequences from large scale metagenomic datasets that already exist in the SRA database.
 
 Viruses across multiple virus families are found integrated in host genomes. The genes that are integrated depends upon the specific viral integration. Sometimes the integration event is a complete genome or partial genome.
 
