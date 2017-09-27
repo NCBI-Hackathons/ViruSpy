@@ -19,7 +19,7 @@ if(len(sys.argv)<3):
 cnt = 0
 query_file=""
 db_name = ""
-eval = "0.0001"
+eval = "0.000000000000000000000000000001"
 domains = []
 with open("viral_cdd_domains.txt", 'r') as myfile:
 	for data in myfile:
@@ -45,15 +45,15 @@ if(db_name=="Pfam"):
 else:
 	protein = 0
 numSequences = 0
-constantFont = 0.3
+constantFont = 0.06
 constantWidth = 0.005
-with open(query_file, 'r') as myfile:
-	for data in myfile:
-		if(data[0]==">"):
-			numSequences = numSequences + 1
 temp = ""
 figure(1,figsize = (6,11))
 title('Visualization of Query Sequence and Hits')
+if(protein==1):
+	call(["rpsblast","-query",query_file,"-db",db_name,"-evalue",eval,"-out","temp.txt","-outfmt","6"])
+else:
+	call(["rpstblastn","-query",query_file,"-db",db_name,"-evalue",eval,"-out","temp.txt","-outfmt","6"])
 thisCount = 0
 currStr = ""
 notFirst = 0
@@ -64,112 +64,7 @@ yLowHigh = 0.4
 yHighHigh = 0.95
 yHighLow = 0.6
 
-with open(query_file, 'r') as myfile:
-	for data in myfile:
-		if(data[0]==">" and notFirst!=0):
-			thisCount = thisCount+1
-			currStr2 = currStr.replace(' ','')
-			currStr2 = currStr2.replace('\n','')
-			currStr2 = currStr2.replace('>','')
-			currStr2 = currStr2.replace('\r','')
-			
-			temp = currStr
-			text_file = open("tmp.txt", "w")
-			text_file.write("%s" % temp)
-			text_file.close()
-			output_file = 'temp.txt'
-			if(protein==1):
-				call(["rpsblast","-query","tmp.txt","-db",db_name,"-evalue",eval,"-out","temp.txt","-outfmt","6"])
-			else:
-				call(["rpstblastn","-query","tmp.txt","-db",db_name,"-evalue",eval,"-out","temp.txt","-outfmt","6"])
-			count = 0
-			q_start = []
-			q_end = []
-			s_start = []
-			s_end = []
-			evalue = []
-			name = []
-			type = []
-			orientation = []
-			with open(output_file,'rb') as tsvin:
-				tsvin = csv.reader(tsvin,delimiter='\t')
-				for row in tsvin:
-					if row[0]==currStr.split(" ")[0].replace('>',''):
-						count = count + 1
-						if(int(row[6]) > int(row[7])): ##reversed orientation
-							orientation.append(1)
-							q_start.append(int(row[7]))
-							q_end.append(int(row[6]))
-						else:
-							orientation.append(0)
-							q_start.append(int(row[6]))
-							q_end.append(int(row[7]))
-						s_start.append(int(row[8]))
-						s_end.append(int(row[9]))
-						evalue.append(float(row[10]))
-						name.append(row[1].split(":")[1])
-						
-						if row[1].split(":")[1] in domains:
-							type.append(1)
-						else:
-							type.append(0)
-			if count>0:
-				ax1 = subplot(numSequences,2,2*thisCount)
-				ax2 = subplot(numSequences,2,2*thisCount-1)
-				for i in range(0,count):
-			##Plot a line from query start to query end, colored by Viral and Non-viral
-			##Add in the name of the protein domain above the line
-			## remove all figure outlines and axes 
-			#ax2 = subplot(gs[i+1])
-					fontsize = constantFont*numSequences
-					line = linspace(0,len(currStr),1000)
-					y = linspace(yHigh+0.05,yHigh+0.05,1000)
-					y2 = linspace(yLow+0.05,yLow+0.05,1000)
-					if type[i]==0: ##Non-viral
-						#temp2 = ptl.plot(line,y,color='black',linestyle='dashed')
-						if(orientation[i]==1): 
-							ax2.add_patch(patches.Rectangle((q_start[i],yLow),q_end[i]-q_start[i],0.1,fill=False))
-							ax2.text(q_start[i],yLowHigh,name[i],fontsize=fontsize)
-						else:
-							ax2.add_patch(patches.Rectangle((q_start[i],yHigh),q_end[i]-q_start[i],0.1,fill=False))
-							ax2.text(q_start[i],yHighHigh,name[i],fontsize=fontsize)
-					else:
-						if(orientation[i]==1): 
-							ax2.add_patch(patches.Rectangle((q_start[i],yLow),q_end[i]-q_start[i],0.1))
-							ax2.text(q_start[i],yLowLow,name[i],fontsize=fontsize)
-						else:
-							ax2.add_patch(patches.Rectangle((q_start[i],yHigh),q_end[i]-q_start[i],0.1))
-							ax2.text(q_start[i],yHighLow,name[i],fontsize=fontsize)
-						#temp2 = ptl.plot(line,y,color = 'red',linestyle='solid')
-					temp2 = ptl.plot(line,y,color='purple',linewidth=constantWidth*numSequences)
-					temp2 = ptl.plot(line,y2,color='purple',linewidth=constantWidth*numSequences)
-									
-							
-					ax2.set_xlim([0, len(currStr2)])
-					ax2.set_ylim([0, 1])
-					ax2.axis('off')
-					#ax1.text(0.5,0.5,str(thisCount))
-					ax1.text(0.5,0.5,currStr.split(" ")[0].replace('>',''))
-					ax1.set_xlim([0,1])
-					ax1.set_ylim([0,1])
-					ax1.axis('off')
-			currStr = ""
-		elif(data[0]==">"):
-			notFirst = 1
-		currStr = currStr + data
-currStr2 = currStr.replace(' ','')
-currStr2 = currStr2.replace('\n','')
-currStr2 = currStr2.replace('>','')
-currStr2 = currStr2.replace('\r','')
-temp = currStr
-text_file = open("tmp.txt", "w")
-text_file.write("%s" % temp)
-text_file.close()
 output_file = 'temp.txt'
-if(protein==1):
-	call(["rpsblast","-query",query_file,"-db",db_name,"-evalue",eval,"-out","temp.txt","-outfmt","6"])
-else:
-	call(["rpstblastn","-query",query_file,"-db",db_name,"-evalue",eval,"-out","temp.txt","-outfmt","6"])
 
 count = 0
 q_start = []
@@ -179,68 +74,80 @@ s_end = []
 evalue = []
 name = []
 type = []
+contig = []
 orientation = []
 	##query start, query end
 with open(output_file,'rb') as tsvin:
 	tsvin = csv.reader(tsvin,delimiter='\t')
 	for row in tsvin:
-		if row[0]==currStr.split(" ")[0].replace('>',''):
-			count = count + 1
-			if(int(row[6]) > int(row[7])):
-				orientation.append(1)
-				q_start.append(int(row[7]))
-				q_end.append(int(row[6]))
-			else:
-				orientation.append(0)
-				q_start.append(int(row[6]))
-				q_end.append(int(row[7]))
-			s_start.append(int(row[8]))
-			s_end.append(int(row[9]))
-			evalue.append(float(row[10]))
-			name.append(row[1].split(":")[1])
-			
-			if row[1].split(":")[1] in domains:
-				type.append(1)
-			else:
-				type.append(0)
-if count>0:
-	print 'Added title'
-	ax1 = subplot(numSequences,2,2*thisCount+2)
-	ax2 = subplot(numSequences,2,2*thisCount+1)
-	for i in range(0,count):
-			##Plot a line from query start to query end, colored by Viral and Non-viral
-			##Add in the name of the protein domain above the line
-			## remove all figure outlines and axes 
-			#ax2 = subplot(gs[i+1])
-			
-		line = linspace(0,len(currStr),1000)
-		y2 = linspace(yLow+0.05,yLow+0.05,1000)
-		if type[i]==0: ##Non-viral
-						#temp2 = ptl.plot(line,y,color='black',linestyle='dashed')
-			if(orientation[i]==1): 
-				ax2.add_patch(patches.Rectangle((q_start[i],yLow),q_end[i]-q_start[i],0.1,fill=False))
-				ax2.text(q_start[i],yLowHigh,name[i],fontsize=fontsize)
-			else:
-				ax2.add_patch(patches.Rectangle((q_start[i],yHigh),q_end[i]-q_start[i],0.1,fill=False))
-				ax2.text(q_start[i],yHighHigh,name[i],fontsize=fontsize)
+		count = count + 1
+		if(int(row[6]) > int(row[7])):
+			orientation.append(1)
+			q_start.append(int(row[7]))
+			q_end.append(int(row[6]))
 		else:
-			if(orientation[i]==1): 
-				ax2.add_patch(patches.Rectangle((q_start[i],yLow),q_end[i]-q_start[i],0.1))
-				ax2.text(q_start[i],yLowLow,name[i],fontsize=fontsize)
-			else:
-				ax2.add_patch(patches.Rectangle((q_start[i],yHigh),q_end[i]-q_start[i],0.1))
-				ax2.text(q_start[i],yHighLow,name[i],fontsize=fontsize)
-						#temp2 = ptl.plot(line,y,color = 'red',linestyle='solid')
-	temp2 = ptl.plot(line,y,color='purple',linewidth=constantWidth*numSequences)
-	temp2 = ptl.plot(line,y2,color='purple',linewidth=constantWidth*numSequences)
-	ax2.set_xlim([0, len(currStr2)])
-	ax2.set_ylim([0, 1])
-	ax2.axis('off')
-	#ax1.text(0.5,0.5,str(thisCount+1))
-	ax1.text(0.5,0.5,currStr.split(" ")[0].replace('>',''))
-	ax1.set_xlim([0,1])
-	ax1.set_ylim([0,1])
-	ax1.axis('off')
+			orientation.append(0)
+			q_start.append(int(row[6]))
+			q_end.append(int(row[7]))
+		s_start.append(int(row[8]))
+		s_end.append(int(row[9]))
+		evalue.append(float(row[10]))
+		name.append(row[1].split(":")[1])
+		contig.append(row[0])
+		if row[1].split(":")[1] in domains:
+			type.append(1)
+		else:
+			type.append(0)
+if(count==0):
+	print 'No domains found'
+	sys.exit(0)
+lengths = {}
+with open(query_file, 'r') as myfile:
+	for data in myfile:
+		#print data
+		if(data[0]==">"):
+			nam = data.split(" ")[0].replace('>','')
+		else:
+			lengths.update({nam:len(data)})
+			
+numSequences = len(set(contig))
+fontsize = constantFont*numSequences*numSequences
+namCount = 1
+if count>0:
+	for n in set(contig):
+		ax1 = subplot(numSequences,2,2*namCount)
+		ax2 = subplot(numSequences,2,2*namCount-1)
+		for i in range(0,count):
+			if(contig[i]==n):
+				line = linspace(0,lengths[contig[i]],1000)
+				y = linspace(yHigh + 0.05,yHigh +0.05,1000)
+				y2 = linspace(yLow+0.05,yLow+0.05,1000)
+				if type[i]==0: ##Non-viral
+					if(orientation[i]==1): 
+						ax2.add_patch(patches.Rectangle((q_start[i],yLow),q_end[i]-q_start[i],0.1,fill=False))
+						ax2.text(q_start[i],yLowHigh,name[i],fontsize=fontsize)
+					else:
+						ax2.add_patch(patches.Rectangle((q_start[i],yHigh),q_end[i]-q_start[i],0.1,fill=False))
+						ax2.text(q_start[i],yHighHigh,name[i],fontsize=fontsize)
+				else:
+					if(orientation[i]==1): 
+						ax2.add_patch(patches.Rectangle((q_start[i],yLow),q_end[i]-q_start[i],0.1))
+						ax2.text(q_start[i],yLowLow,name[i],fontsize=fontsize)
+					else:
+						ax2.add_patch(patches.Rectangle((q_start[i],yHigh),q_end[i]-q_start[i],0.1))
+						ax2.text(q_start[i],yHighLow,name[i],fontsize=fontsize)
+								#temp2 = ptl.plot(line,y,color = 'red',linestyle='solid')
+		temp2 = ptl.plot(line,y,color='purple',linewidth=constantWidth*numSequences)
+		temp2 = ptl.plot(line,y2,color='purple',linewidth=constantWidth*numSequences)
+		ax2.set_xlim([0, lengths[n]])
+		ax2.set_ylim([0, 1])
+		ax2.axis('off')
+		#ax1.text(0.5,0.5,str(thisCount+1))
+		ax1.text(0.5,0.5,n)
+		ax1.set_xlim([0,1])
+		ax1.set_ylim([0,1])
+		ax1.axis('off')
+		namCount = namCount + 1
 
 show()
 savefig(output_name)
