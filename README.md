@@ -16,7 +16,7 @@ ViruSpy is a program for identiying viral genes and genomes from metagenomic dat
 
 In addition, VirusSpy attempts to extend the viral contigs with host reads by an iterative process that we call BUD: building up domains. The BUDing process 
 
-## Workflow 
+# Workflow 
 
 Virusspace first gathers refseq viral genomes or uses a user supplied fasta, or BLAST database. The SRA file is selected to search for viruses in and the BLAST database is selected so that we use it in conjunction with Magic-BLAST to find putative viral reads.
 
@@ -55,7 +55,6 @@ Protein domains were identified using NCBI's RPS-tBLASTn.
 
 [NCBI Conserved Domain and Protein Classification](https://www.ncbi.nlm.nih.gov/Structure/cdd/cdd_help.shtml)
 
-
 ### Glimmer3
 
 Glimmer3 was used to identify putative open reading frames in the contigs.
@@ -66,10 +65,13 @@ Glimmer3 was used to identify putative open reading frames in the contigs.
 
 [Glimmer3 manual/notes PDF](https://ccb.jhu.edu/software/glimmer/glim302notes.pdf)
 
+## BUD Algorithm
 
-## Installing ViruSpy
+Used to extend contigs that possess viral domains for the purpose of identifying host genome integration sites
 
-## ViruSpy Usage
+# Installing ViruSpy
+
+# ViruSpy Usage
 
 viruspy.sh [-d] -srr SRR123456 -f/-b viral.refseq -out output_folder
 
