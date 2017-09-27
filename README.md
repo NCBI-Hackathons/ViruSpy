@@ -27,7 +27,7 @@ Using the identified viral reads, the determination of endogenous reads within a
 ![alt text](https://github.com/NCBI-Hackathons/VirusCore/blob/master/BUD_Algorithm.JPG "Building Up Domains Algorithm")
 ### References
 
-### Magic-BLAST
+#### Magic-BLAST
 
 [BLAST Command Line Manual](https://www.ncbi.nlm.nih.gov/books/NBK279690/)
 
@@ -35,27 +35,25 @@ Using the identified viral reads, the determination of endogenous reads within a
 
 [Magic-BLAST NCBI Insights](https://ncbiinsights.ncbi.nlm.nih.gov/2016/10/13/introducing-magic-blast/)
 
-### MEGAHIT
+#### MEGAHIT
 
 [MEGAHIT GitHub repo](https://github.com/voutcn/megahit)
 
 [MEGAHIT Paper](https://www.ncbi.nlm.nih.gov/pubmed/25609793)
 
-### Protein Domain Identification
+#### Protein Domain Identification
 
 [BLAST Command Line Manual](https://www.ncbi.nlm.nih.gov/books/NBK279690/)
 
 [NCBI Conserved Domain and Protein Classification](https://www.ncbi.nlm.nih.gov/Structure/cdd/cdd_help.shtml)
 
-### Glimmer3
+#### Glimmer3
 
 [Glimmer3 Page at JHU](https://ccb.jhu.edu/software/glimmer/)
 
 [Glimmer3 Paper](https://ccb.jhu.edu/papers/glimmer3.pdf)
 
 [Glimmer3 manual/notes PDF](https://ccb.jhu.edu/software/glimmer/glim302notes.pdf)
-
-## BUD Algorithm
 
 # Installing ViruSpy
 
