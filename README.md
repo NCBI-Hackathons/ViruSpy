@@ -1,6 +1,8 @@
 # ViruSpy: a pipeline for viral identification from metagenomic samples
 
-ViruSpy identifies viral gene sequences and even full virus genomes from metagenomic sequencing data available in NCBI's SRA database. From these, ViruSpy determines whether the viral sequences are non-native (i.e. integrated) to a host genome.
+## What is ViruSpy?
+
+ViruSpy is a pipeline that identifies viral gene sequences and even full virus genomes from metagenomic sequencing data available in NCBI's SRA database. From these, ViruSpy determines whether the viral sequences are non-native (i.e. integrated) to a host genome.
 
 ## Why is this important?
 
@@ -8,13 +10,13 @@ Viruses compose a large amount of the genomic biodiversity on the planet, but on
 
 Viruses across multiple virus families are found integrated in host genomes. The genes that are integrated depends upon the specific viral integration. Sometimes the integration event is a complete genome or partial genome.
 
-## What is ViruSpy?
-
-ViruSpy is a program for identiying viral genes and genomes from metagenomic datasets. This pipeline first obtains a set of reference sequences from the NCBI Viral RefSeq server, or as input from the user, and constructs a BLAST database. Next it runs [Magic-BLAST](https://ncbi.github.io/magicblast/) to align reads from an SRA library to the BLAST database. Magic-BLAST is used here to obtain all the virus-like sequences from a metagenomic sample for use with MegaHit, succinct De Bruin graph based genome assembly software. Contigs built by MegaHit are then run through Glimmer3 to predict open reading frames and RPS-TBLASTN to predict conserved protein domains. Output files from both of these methods are combined to identify a high confidence set of viral contigs.
-
-In addition, VirusSpy attempts to extend the viral contigs with host reads by an iterative process that we call BUD: building up domains. The BUDing process 
-
 # Workflow 
+
+The pipeline obtains a set of reference sequences from the NCBI Viral RefSeq server, or as input from the user, and constructs a BLAST database from it. Next it runs [Magic-BLAST](https://ncbi.github.io/magicblast/) to align reads from an SRA library to the BLAST database. Magic-BLAST is used here to obtain all the virus-like sequences from a metagenomic sample for use with MegaHit, succinct De Bruin graph based genome assembly software. Contigs built by MegaHit are then run through Glimmer3 to predict open reading frames and RPS-TBLASTN to predict conserved protein domains. Output files from both of these methods are combined to identify a high confidence set of viral contigs.
+
+In addition, VirusSpy attempts to extend the viral contigs with host reads by an iterative process that we call BUD: building up domains. The BUDing process
+
+# Detailed
 
 ViruSpy gathers reference viral genomes through either a user-supplied FASTA file or BLAST database. Reads from the provided SRA ID are searched against this database using Magic-BLAST to find putative viral reads.
 
