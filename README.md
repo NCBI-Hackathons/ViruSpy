@@ -1,10 +1,8 @@
 # ViruSpy: a pipeline for viral identification from metagenomic samples
 
-## Goal
-
 ViruSpy identifies viral gene sequences and even full virus genomes from metagenomic sequencing data available in NCBI's SRA database. From these, ViruSpy determines whether the viral sequences are non-native (i.e. integrated) to a host genome.
 
-## Why this is important?
+## Why is this important?
 
 Viruses compose a large amount of the genomic biodiversity on the planet, but only a small fraction of the viruses that exist are known. To help fill this gap in knowledge we have produced a pipeline that can identify putative viral sequences from large scale metagenomic datasets that already exist in the SRA database.
 
