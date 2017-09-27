@@ -30,7 +30,7 @@ In the first step Magic-BLAST returns all of the virus-like sequences from the S
 
 The contigs are verified as viral sequences through two methods: prediction of open reading frames within the contigs using Glimmer3, and prediction of conserved protein domains using RPS-tBLASTn. The viral conserved domains (CD) are determined using the NCBI CDD database. Output files from both of these methods are then combined to identify a set of high confidence viral contigs. 
 
-<img src="https://github.com/NCBI-Hackathons/VirusCore/blob/master/Workflow_Diagram.JPG" height="450" width="650">
+<img src="https://github.com/NCBI-Hackathons/VirusCore/blob/master/workflow.png" height="450" width="650">
 
 Using the identified viral reads, the determination of endogenous reads within a host relies upon the Building Up Domains (BUD) algorithm. BUD takes as input an identified peprocessed viral contig from a metagenomics dataset and feeds the contig ends from both sides to Magic-BLAST, which searches for overlapping reads in the SRA dataset. The reads are then used to extend the contig in both directions. This process continues until non-viral domains are identified on either side of the original viral contig, implying that the original contig was endogenous in the host, or until a specified number of iterations has been reached (default iteration value was set to 10). This process is depicted below:
 
