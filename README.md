@@ -53,7 +53,7 @@ Using the identified viral reads, the determination of endogenous reads within a
 
 [Glimmer3 Paper](https://ccb.jhu.edu/papers/glimmer3.pdf)
 
-[Glimmer3 manual/notes PDF](https://ccb.jhu.edu/software/glimmer/glim302notes.pdf)
+[Glimmer3 Manual](https://ccb.jhu.edu/software/glimmer/glim302notes.pdf)
 
 # Installing ViruSpy
 
