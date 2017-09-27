@@ -24,9 +24,15 @@ ViruSpy gathers reference viral genomes through either a user-supplied FASTA fil
 
 For convenience, a [utility](https://github.com/NCBI-Hackathons/VirusCore/blob/master/get_refseq_viral_seqs.sh) has been provided to download the most recent release of RefSeq viral genomes from NCBI. The resulting FASTA file can be used as the reference file for ViruSpy.
 
-Once Magic-BLAST returns all of the virus-like sequences in the SRA sample, they are assembled into contigs using the MEGAHIT software.
+Once Magic-BLAST returns all of the virus-like sequences in the SRA sample, they are assembled into contigs using the MEGAHIT assembler.
 
-Contigs are verified as viral sequences through two methods: Glimmer3 predicts open reading frames within the contigs and RPS-tBLASTn predicts conserved protein domains. Output files from both of these methods are combined to identify a set of high confidence viral contigs.
+Contigs are verified as viral sequences through two methods: Glimmer3 predicts open reading frames within the contigs and RPS-tBLASTn predicts conserved protein domains. Viral domains have been determined based upon the NCBI CDD database. Output files from both of these methods are combined to identify a set of high confidence viral contigs. 
+
+Using the identified viral reads, the determination of endogenous reads within a host relies upon the Building Up Domains (BUD) algorithm. BUD takes as input an identified viral contig from a metagenomics dataset and it runs the two ends of the identified contig through MagicBLAST to find overlapping reads. These reads are then used to extend the contig in both directions. This process continues until non-viral domains are identified on either side of the original viral contig, implying that the original contig was endogenous in the host, or until a specified number of iterations has been reached. This process is depicted below:
+
+![alt text](https://github.com/NCBI-Hackathons/VirusCore/blob/master/BUD.png "Building up domains algorithm")
+
+### Delete pictures below once workflow diagram is added
 
 ![alt text](https://github.com/NCBI-Hackathons/VirusCore/blob/master/Slide2.jpg "Obtaining SRA Data and BLAST Databases")
 
