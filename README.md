@@ -55,9 +55,9 @@ Using the identified viral reads, the determination of endogenous reads within a
 
 [Glimmer3 Manual](https://ccb.jhu.edu/software/glimmer/glim302notes.pdf)
 
-# Installing ViruSpy
+## Installing ViruSpy
 
-# ViruSpy Usage
+## ViruSpy Usage
 
 viruspy.sh [-d] -srr SRR123456 -f/-b viral.refseq -out output_folder
 
