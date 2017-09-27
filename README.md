@@ -1,6 +1,6 @@
 # ViruSpy: a pipeline for viral identification from metagenomic samples
 
-[What is ViruSpy?](#intro)
+[What is ViruSpy?](#intro)    
 [Why is this important?](#importance)
 [ViruSpy Workflow](#workflow)
 [Installing ViruSpy](#install)
