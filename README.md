@@ -4,8 +4,8 @@
 
 [What is ViruSpy?](#intro)    
 [Why is this important?](#importance)    
-[ViruSpy Workflow](#workflow)
-[Quickstart](#quickstart)
+[ViruSpy Workflow](#workflow)    
+[Quickstart](#quickstart)    
 [Installing ViruSpy](#install)    
 [ViruSpy Usage](#usage)    
 [ViruSpy Testing and Validation](#testing_and_validation)    
