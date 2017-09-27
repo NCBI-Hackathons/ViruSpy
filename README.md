@@ -12,7 +12,6 @@ Viruses across multiple virus families are found integrated in host genomes. By 
 
 ## ViruSpy Workflow
 
-![alt text](https://github.com/NCBI-Hackathons/VirusCore/blob/master/input.png "Input")
 <img src="https://github.com/NCBI-Hackathons/VirusCore/blob/master/input.png" height="24" width="48">
 
 The user needs to provide the SRA ID of the metagenomic sample to be searched through and a reference viral genome database. The reference viral genome database can be either supplied to the ViruSpy by user in form of FASTA file or BLAST database, or if neither is provided, ViruSpy will default to the RefSeq viral genome database and attempt to download those sequences in FASTA format. 
