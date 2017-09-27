@@ -17,13 +17,13 @@ The ViruuSpy requires user to provide the SRA ID of the metagenomic sample to be
 For convenience, a [utility](https://github.com/NCBI-Hackathons/VirusCore/blob/master/get_refseq_viral_seqs.sh) has been provided to download the most recent release of RefSeq viral genomes from NCBI. The resulting FASTA file can be used as the reference file for ViruSpy.
 <img src="https://github.com/NCBI-Hackathons/VirusCore/blob/master/input.png" height="400" width="550">
 
-Once Magic-BLAST returns all of the virus-like sequences in the SRA sample, they are assembled into contigs using the MEGAHIT assembler.
+In the first step Magic-BLAST returns all of the virus-like sequences from the SRA sample, which in the second part assembled into contigs using the MEGAHIT assembler.
 
-Contigs are verified as viral sequences through two methods: Glimmer3 predicts open reading frames within the contigs and RPS-tBLASTn predicts conserved protein domains. Viral domains have been determined based upon the NCBI CDD database. Output files from both of these methods are combined to identify a set of high confidence viral contigs. 
+In the thrid part the contigs are verified as viral sequences through two methods: by Glimmer3 prediction of open reading frames within the contigs, and by RPS-TBLASTN prediction of conserved protein domains. The viral conserved domains (CD)have been determined based upon the NCBI CDD database. Output files from both of these methods are then combined to identify a set of high confidence viral contigs. 
 
 ![alt text](https://github.com/NCBI-Hackathons/VirusCore/blob/master/Workflow_Diagram.JPG "Workflow Overview")
 
-Using the identified viral reads, the determination of endogenous reads within a host relies upon the Building Up Domains (BUD) algorithm. BUD takes as input an identified viral contig from a metagenomics dataset and it runs the two ends of the identified contig through MagicBLAST to find overlapping reads. These reads are then used to extend the contig in both directions. This process continues until non-viral domains are identified on either side of the original viral contig, implying that the original contig was endogenous in the host, or until a specified number of iterations has been reached. This process is depicted below:
+Using the identified viral reads, the determination of endogenous reads within a host relies upon the Building Up Domains (BUD) algorithm. BUD takes as input an identified peprocessed viral contig from a metagenomics dataset and feeds the contig ends from both sides to Magic-BLAST, which searches for overlapping reads in the SRA dataset. The reads are then used to extend the contig in both directions. This process continues until non-viral domains are identified on either side of the original viral contig, implying that the original contig was endogenous in the host, or until a specified number of iterations has been reached (default iteration value was set to 10). This process is depicted below:
 
 ![alt text](https://github.com/NCBI-Hackathons/VirusCore/blob/master/BUD_Algorithm.JPG "Building Up Domains Algorithm")
 ### Useful References
