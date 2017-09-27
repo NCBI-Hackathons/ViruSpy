@@ -1,24 +1,26 @@
 # ViruSpy: a pipeline for viral identification from metagenomic samples
 
-## Goal
+## What is ViruSpy?
 
-To identify viral gene sequences and even full virus genomes from metagenomic sequencing data available in NCBI's SRA database. To determine if viruses are non-native (i.e. integrated) to a host genome.
+ViruSpy is a pipeline that identifies viral gene sequences and even full virus genomes from metagenomic sequencing data available in NCBI's SRA database. From these, ViruSpy determines whether the viral sequences are non-native (i.e. integrated) to a host genome.
 
-## Why this is important?
+## Why is this important?
 
 Viruses compose a large amount of the genomic biodiversity on the planet, but only a small fraction of the viruses that exist are known. To help fill this gap in knowledge we have produced a pipeline that can identify putative viral sequences from large scale metagenomic datasets that already exist in the SRA database.
 
 Viruses across multiple virus families are found integrated in host genomes. The genes that are integrated depends upon the specific viral integration. Sometimes the integration event is a complete genome or partial genome.
 
-## What is ViruSpy?
-
-ViruSpy is a program for identiying viral genes and genomes from metagenomic datasets. This pipeline first obtains a set of reference sequences from the NCBI Viral RefSeq server, or as input from the user, and constructs a BLAST database. Next it runs [Magic-BLAST](https://ncbi.github.io/magicblast/) to align reads from an SRA library to the BLAST database. Magic-BLAST is used here to obtain all the virus-like sequences from a metagenomic sample for use with MegaHit, succinct De Bruin graph based genome assembly software. Contigs built by MegaHit are then run through Glimmer3 to predict open reading frames and RPS-TBLASTN to predict conserved protein domains. Output files from both of these methods are combined to identify a high confidence set of viral contigs.
-
-In addition, VirusSpy attempts to extend the viral contigs with host reads by an iterative process that we call BUD: building up domains. The BUDing process 
-
 # Workflow 
 
-Virusspace first gathers refseq viral genomes or uses a user supplied fasta, or BLAST database. The SRA file is selected to search for viruses in and the BLAST database is selected so that we use it in conjunction with Magic-BLAST to find putative viral reads.
+The pipeline obtains a set of reference sequences from the NCBI Viral RefSeq server, or as input from the user, and constructs a BLAST database from it. Next it runs [Magic-BLAST](https://ncbi.github.io/magicblast/) to align reads from an SRA library to the BLAST database. Magic-BLAST is used here to obtain all the virus-like sequences from a metagenomic sample for use with MegaHit, succinct De Bruin graph based genome assembly software. Contigs built by MegaHit are then run through Glimmer3 to predict open reading frames and RPS-TBLASTN to predict conserved protein domains. Output files from both of these methods are combined to identify a high confidence set of viral contigs.
+
+In addition, VirusSpy attempts to extend the viral contigs with host reads by an iterative process that we call BUD: building up domains. The BUDing process
+
+# Detailed
+
+ViruSpy gathers reference viral genomes through either a user-supplied FASTA file or BLAST database. Reads from the provided SRA ID are searched against this database using Magic-BLAST to find putative viral reads.
+
+For convenience, a [utility](https://github.com/NCBI-Hackathons/VirusCore/blob/master/get_refseq_viral_seqs.sh) has been provided to download the most recent release of RefSeq viral genomes from NCBI. The resulting FASTA file can be used as the reference file for ViruSpy.
 
 ![alt text](https://github.com/NCBI-Hackathons/VirusCore/blob/master/Slide2.jpg "Obtaining SRA Data and BLAST Databases")
 
@@ -41,7 +43,7 @@ The pipeline starts with Magic-BLAST leveraging this tools ability to access SRA
 
 ### MEGAHIT
 
-[MEGAHIT GitHub repot](https://github.com/voutcn/megahit)
+[MEGAHIT GitHub repo](https://github.com/voutcn/megahit)
 
 [MEGAHIT Paper](https://www.ncbi.nlm.nih.gov/pubmed/25609793)
 
