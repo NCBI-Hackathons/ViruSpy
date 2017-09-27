@@ -69,7 +69,7 @@ viruspy.sh [-d] [-f viral_genomes.fasta/-b viral_db] -srr SRR123456 -out output_
 | Option     | Description                                     |
 |------------|-------------------------------------------------|
 | **-srr**   | SRR acession number from SRA database           |
-| **-out**   | Specify a folder to be used for pipeline output |
+| **-out**   | Folder to be used for pipeline output |
 
 #### Optional arguments:
 
