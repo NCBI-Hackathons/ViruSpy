@@ -2,13 +2,13 @@
 
 ## What is ViruSpy?
 
-ViruSpy is a pipeline that identifies viral gene sequences and even full virus genomes from metagenomic sequencing data available in NCBI's SRA database. From these, ViruSpy determines whether the viral sequences are non-native (i.e. integrated) to a host genome.
+ViruSpy is a pipeline designed for virus discovery from metagenomic sequencing data available in NCBI’s SRA database. The first step lies in identification of viral reads in the metagenomic sample with Magic-BLAST, which allows this step without the need for downloading the metagenomic dataset to the local computer. The extracted raw reads are assembled into contigs by use of MEGAHIT and annotated for genes by Glimmer and for conserved domains by RPS-TBLASTN. Following integration of Building Up Domains (BUD) algorithms allows to whether the viral genomes are non-native (i.e. integrated) to a host genome.
 
 ## Why is this important?
 
 Viruses compose a large amount of the genomic biodiversity on the planet, but only a small fraction of the viruses that exist are known. To help fill this gap in knowledge we created a pipeline that can identify putative viral sequences from large scale metagenomic datasets that already exist in the SRA database.
 
-Viruses across multiple virus families are found integrated in host genomes. The genes that are integrated depends upon the specific viral integration. Sometimes the integration event is a complete genome or partial genome.
+Viruses across multiple virus families are found integrated in host genomes. By including the BUD algorith to the pipeline, we are able to identify these integratd viruses and its host genomes.
 
 ## ViruSpy Workflow
 
