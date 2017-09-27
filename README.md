@@ -1,9 +1,14 @@
 # ViruSpy: a pipeline for viral identification from metagenomic samples
 
-
+[What is ViruSpy?](#intro)
 [Why is this important?](#importance)
+[ViruSpy Workflow](#workflow)
+[Installing ViruSpy](#install)
+[ViruSpy Usage](#usage)
+[ViruSpy Testing and Validation](#testing_and_validation)
+[Additional Functionality](#additional)
 
-## What is ViruSpy?
+## <a name="intro"></a>What is ViruSpy?
 
 ViruSpy is a pipeline designed for virus discovery from metagenomic sequencing data available in NCBI’s SRA database. The first step identifies viral reads in the metagenomic sample with Magic-BLAST, which allows this step without needing to download the (often quite large) metagenomic dataset. The extracted raw reads are assembled into contigs using MEGAHIT and annotated for genes by Glimmer and for conserved domains by RPS-TBLASTN. Following annotation, the Building Up Domains (BUD) algorithm allows us to tell whether the viral genomes are non-native (i.e. integrated) to a host genome.
 
@@ -13,7 +18,7 @@ Viruses compose a large amount of the genomic biodiversity on the planet, but on
 
 Viruses across multiple virus families are found integrated in host genomes. By including the BUD algorith in the pipeline, we are able to identify these and distinguish them from exogenous viruses.
 
-## ViruSpy Workflow
+## <a name="workflow"></a>ViruSpy Workflow
 
 The ViruSpy pipeline requires the user to provide the SRA ID of the metagenomic sample to be searched through and a reference viral genome database. The reference viral genome database can be either supplied by the user in the form of a FASTA file or BLAST database. If neither is provided, ViruSpy will default to the RefSeq viral genome database and attempt to download those sequences in FASTA format. 
 
@@ -59,9 +64,9 @@ Using the identified viral reads, the determination of endogenous reads within a
 
 [Glimmer3 Manual](https://ccb.jhu.edu/software/glimmer/glim302notes.pdf)
 
-## Installing ViruSpy
+## <a name="install"></a>Installing ViruSpy
 
-## ViruSpy Usage
+## <a name="usage"></a>ViruSpy Usage
 
 #### Example usage
 
@@ -82,9 +87,9 @@ viruspy.sh [-d] [-f viral_genomes.fasta/-b viral_db] -srr SRR123456 -out output_
 | **-b**    |BLAST database with viral sequences to be used with Magic-BLAST. If neither this argument nor -f are used, ViruSpy will default to using the Refseq viral genome database.|
 | **-d**    |Determines signature of viruses that are integrated into a host genome (runs the BUD algorithm)|
 
-## ViruSpy Testing and Validation
+## <a name="testing_and_validation"></a>ViruSpy Testing and Validation
 
-## Additional Functionality
+## <a name="additional"></a>Additional Functionality
 
 
 
