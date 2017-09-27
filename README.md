@@ -16,7 +16,7 @@ The ViruSpy pipeline requires the user to provide the SRA ID of the metagenomic 
 
 <img src="https://github.com/NCBI-Hackathons/VirusCore/blob/master/input.png" height="400" width="550">
 
-In the first step Magic-BLAST returns all of the virus-like sequences from the SRA sample, which are then assembled into contigs using the MEGAHIT assembler.
+In the first step Magic-BLAST returns all of the virus-like sequences from the SRA sample, which are assembled into contigs using the MEGAHIT assembler.
 
 The contigs are verified as viral sequences through two methods: prediction of open reading frames within the contigs using Glimmer3, and prediction of conserved protein domains using RPS-tBLASTn. The viral conserved domains (CD) are determined using the NCBI CDD database. Output files from both of these methods are then combined to identify a set of high confidence viral contigs. 
 
