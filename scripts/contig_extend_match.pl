@@ -4,6 +4,10 @@ use warnings;
 use Getopt::Long;
 use Bio::SeqIO;
 
+# To test this Script
+# contig_extend_match.pl -q contigs1.fa -c contigs.fa  -> will get one contig (contig1_extended) in the extended.fa file
+# contig_extend_match.pl -q contigs1.fa -c contigs.noextend.fa  -> extended.fa is empty
+
 my $query;
 my $contigs;
 my $dbname = "tempdb";
@@ -33,9 +37,17 @@ $0 [-e | -x | -h | -d ] -q QUERY -c CONTIGS
       -h               Help
 
       DESCRIPTION:
+      Script writes one file called 'extended.fa' that is either empty or contains
+      one fasta sequence. If empty, the script could not find an extended sequence
+      in the contigs file. If it contains one sequence, that is the extended
+      sequence found in the set of contigs.
 
       REQUIREMENTS:
       BioPerl
+
+      Memory
+      1) Query sequence and each contig are stored in memory as a Bio::Seq object.
+      2) The output of 'blastn' is stored in memory as an array of rows.
 
 USAGE
   print $usage;
@@ -45,7 +57,7 @@ USAGE
 die "Please specify query file with one sequence (-q|--query)\n" if (!$query || ! -e $query);
 die "Please specify contig fasta file (-c|--contigs)\n" if (!$contigs);
 
-# Read query sequence
+# Read query sequence. If there are more in the file, they are ignored.
 my $qin = Bio::SeqIO->new(-file => $query);
 my $queryseq;
 while ($queryseq = $qin->next_seq) {
@@ -70,6 +82,8 @@ my @blastout = `blastn -query $query -db $dbname -outfmt '6 std'`;
 my $found = 0;
 foreach (@blastout) {
   my @fields = split (/\t/, $_);
+
+  next unless ($queryseq->primary_id eq $fields[0]);  # sanity check in case user supplied more than one query sequence
 
   if ($fields[10] <= $evalue) {
     # evalue passed now check on subject length
