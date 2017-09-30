@@ -64,7 +64,7 @@ Using the identified viral reads, the determination of endogenous reads within a
 ## <a name="install"></a>Installing ViruSpy
 
 Required software
-+ Magic-BLAST: [download](ftp://ftp.ncbi.nlm.nih.gov/blast/executables/magicblast/LATEST) [documentation](https://boratyng.github.io/magicblast/)
++ Magic-BLAST: [download](https://ftp.ncbi.nlm.nih.gov/blast/executables/magicblast/LATEST) [documentation](https://boratyng.github.io/magicblast/)
 + [BLAST+](https://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE_TYPE=BlastDocs&DOC_TYPE=Download)
 + [Samtools](http://www.htslib.org/) (>= version 1.5)
 + [Prinseq](http://prinseq.sourceforge.net/)
