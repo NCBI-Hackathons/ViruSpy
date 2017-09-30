@@ -37,7 +37,7 @@ if [[ -z $srr ]]; then
 	echo -e "\nMagic Blast: No SRR value provided; exiting."; exit
 else
 	echo -e "\nRunning MAGICBLAST on $srr,"
-	echo -e "saving to '$out_file.'\n"
+	echo -e "saving to '$out_file'\n"
 fi
 
 if [[ -z $out_file ]]; then
@@ -71,6 +71,7 @@ magicblast 	-db $viralDB \
 echo -e "Converting putative viral reads back to FASTQ format...\n"
 
 samtools view -bS temp_out.sam > temp_out.bam
-samtools fastq temp_out.bam -s $out_file
+# -v 40 is for character 'I' in the quality string
+samtools fastq temp_out.bam -v 40 > $out_file
 
-rm ./temp_out.*
+#rm ./temp_out.*

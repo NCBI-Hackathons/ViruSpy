@@ -69,6 +69,8 @@ elif [[ ! -z $blastDB ]]; then
 fi
 cd $main_dir
 
+##Run Prinseq
+
 ##Run MegaHit##
 $megahit -i $magic_dir/$srr.fastq -o $srr -d $mega_dir
 
