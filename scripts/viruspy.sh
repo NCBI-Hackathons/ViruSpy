@@ -1,68 +1,72 @@
 #!/bin/bash
+set -euo pipefail  # bash strict mode http://redsymbol.net/articles/unofficial-bash-strict-mode/
+IFS=$'\n\t'
 
 #This SRR is for an Ebola sample (so should be all virus I think)
-#Paired end 
+#Paired end
 #Illumina HiSeq
 
+srr=""
+outdir=""
+fasta=""
+blastDB=""
+paired=""
+main_dir=$(pwd)
 while getopts f:b:s:o:p: option
 do
 case "${option}"
 	in
 	s) srr=${OPTARG};;
 	f) fasta=${OPTARG};;
-	d) blastDB=${OPTARG};;
-	o) main_dir=${OPTARG};;
-	p) paired=${OPTARG:$true};;
+	b) blastDB=${OPTARG};;
+	d) bud=${OPTARG};;
+	o) outdir=${OPTARG};;
+	p) paired=${OPTARG};;
 esac
 done
 if [[ -z $srr ]]; then
 	echo "No SRR provided, exiting."; exit
-elif [[ -z $main_dir ]]; then
+elif [[ -z $outdir ]]; then
 	echo "No output directory provided, exiting.";exit
+elif [[ ! -z $fasta && ! -z $blastDB ]]; then
+	echo "Cannot use both -f and -d options together, exiting."; exit
 fi
 
+echo srr: $srr
+echo outdir: $outdir
+echo blastDB: ${blastDB:-viralrefseq}
+echo paired: ${paired:-true}
 
+#srr=SRR1553459
+#virDB=viral.all.1.genomic.fna
+#main_dir=/zfs1/ncbi-workshop/virus-discovery/opts_scripts/
 
-echo $srr
-echo $virDB
-echo $main_dir
-echo $paired
-
-srr=SRR1553459
-virDB=/zfs1/ncbi-workshop/virus-discovery/opts_scripts/viral.all.1.genomic.fna
-main_dir=/zfs1/ncbi-workshop/virus-discovery/opts_scripts
-magic_dir=$main_dir/data_magicblast
-mega_dir=$main_dir/data_megahit
-glim_dir=$main_dir/data_glimmer
-out_dir=$main_dir/data_user
-
-#exit
+magic_dir=$outdir/data_magicblast
+mega_dir=$outdir/data_megahit
+glim_dir=$outdir/data_glimmer
+out_dir=$outdir/data_user
 
 mkdir -p $magic_dir
 rm -f -r $mega_dir		#Megahit won't overwrite directories, so delete if it already exists.
 mkdir -p $out_dir
 mkdir -p $glim_dir
 
-#set main director
-cd $main_dir
-
 ##Scripts##
-magic_blast=$main_dir/magicblast_w_opts.sh
-megahit=$main_dir/megahit_opts.sh
-glilmmer=$main_dir/glimmer_opts.sh
-
-#Make scripts executable.
-chmod a+x $magic_blast
-chmod a+x $megahit
-chmod a+x $glimmer
+magic_blast=magicblast_w_opts.sh
+megahit=megahit_opts.sh
+glimmer=glimmer_opts.sh
 
 ##Run MagicBlast##
 cd $magic_dir
-$magic_blast -s $srr -f $virDB -o $srr.fastq
+if [[ ! -z $fasta ]]; then
+	$magic_blast -s $srr -f "../../$fasta" -o $srr.fastq
+elif [[ ! -z $blastDB ]]; then
+	$magic_blast -s $srr -b "../../$blastDB" -o $srr.fastq
+fi
 cd $main_dir
 
 ##Run MegaHit##
 $megahit -i $magic_dir/$srr.fastq -o $srr -d $mega_dir
 
 ##Run Glimmer##
-$glimmer 
+$glimmer
