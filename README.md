@@ -23,13 +23,13 @@ Viruses across multiple virus families are found integrated in host genomes. By 
 
 ## <a name="workflow"></a>ViruSpy Workflow
 
-The ViruSpy pipeline requires the user to provide the SRA ID of the metagenomic sample to be searched through and a reference viral genome database. The reference viral genome database can be either supplied by the user in the form of a FASTA file or BLAST database. If neither is provided, ViruSpy will default to the RefSeq viral genome database and attempt to download those sequences in FASTA format. 
+The ViruSpy pipeline requires the user to provide the SRA ID of the metagenomic sample to be searched through and a reference viral genome database. The reference viral genome database can be either supplied by the user in the form of a FASTA file or BLAST database. If neither is provided, ViruSpy will default to the RefSeq viral genome database and attempt to download those sequences in FASTA format.
 
 <img src="https://github.com/NCBI-Hackathons/VirusCore/blob/master/input.png" height="400" width="550">
 
 In the first step Magic-BLAST returns all of the virus-like sequences from the SRA sample, which are assembled into contigs using the MEGAHIT assembler.
 
-The contigs are verified as viral sequences through two methods: prediction of open reading frames within the contigs using Glimmer3, and prediction of conserved protein domains using RPS-tBLASTn. The viral conserved domains (CD) are determined using the NCBI CDD database. Output files from both of these methods are then combined to identify a set of high confidence viral contigs. 
+The contigs are verified as viral sequences through two methods: prediction of open reading frames within the contigs using Glimmer3, and prediction of conserved protein domains using RPS-tBLASTn. The viral conserved domains (CD) are determined using the NCBI CDD database. Output files from both of these methods are then combined to identify a set of high confidence viral contigs.
 
 <img src="https://github.com/NCBI-Hackathons/VirusCore/blob/master/workflow.png" height="450" width="650">
 
@@ -62,6 +62,14 @@ Using the identified viral reads, the determination of endogenous reads within a
 [Glimmer3 Manual](https://ccb.jhu.edu/software/glimmer/glim302notes.pdf)    
 
 ## <a name="install"></a>Installing ViruSpy
+
+Required software
++ Magic-BLAST: [download](ftp://ftp.ncbi.nlm.nih.gov/blast/executables/magicblast/LATEST) [documentation](https://boratyng.github.io/magicblast/)
++ [BLAST+](https://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE_TYPE=BlastDocs&DOC_TYPE=Download)
++ [Samtools](http://www.htslib.org/) (>= version 1.5)
++ [Prinseq](http://prinseq.sourceforge.net/)
++ [MEGAHIT](https://github.com/voutcn/megahit)
++ [Glimmer3](https://ccb.jhu.edu/software/glimmer/)
 
 ## <a name="usage"></a><a name="quickstart"></a>ViruSpy Usage
 
