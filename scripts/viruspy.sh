@@ -12,7 +12,8 @@ fasta=""
 blastDB=""
 paired=""
 main_dir=$(pwd)
-while getopts f:b:s:o:p: option
+threads=2
+while getopts f:b:s:o:p:t: option
 do
 case "${option}"
 	in
@@ -22,6 +23,7 @@ case "${option}"
 	d) bud=${OPTARG};;
 	o) outdir=${OPTARG};;
 	p) paired=${OPTARG};;
+	t) threads=${OPTARG};;
 esac
 done
 if [[ -z $srr ]]; then
@@ -30,6 +32,8 @@ elif [[ -z $outdir ]]; then
 	echo "No output directory provided, exiting.";exit
 elif [[ ! -z $fasta && ! -z $blastDB ]]; then
 	echo "Cannot use both -f and -d options together, exiting."; exit
+elif [[ $threads -le 0 ]]; then
+	echo "Threads must be >= 1, exiting."; exit
 fi
 
 echo srr: $srr
