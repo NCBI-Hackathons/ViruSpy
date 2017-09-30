@@ -68,15 +68,15 @@ Using the identified viral reads, the determination of endogenous reads within a
 #### Example usage
 
 ```
-viruspy.sh [-d] [-f viral_genomes.fasta/-b viral_db] --srr SRR1553459 --out_dir output_folder
+viruspy.sh [-d] [-f viral_genomes.fasta/-b viral_db] -s SRR1553459 -o output_folder
 ```
 
 #### Required arguments:
 
 | Option     | Description                                     |
 |------------|-------------------------------------------------|
-| **--srr**   | SRR acession number from SRA database           |
-| **--out_dir**   | Folder to be used for pipeline output |
+| **-s**   | SRR acession number from SRA database           |
+| **-o**   | Folder to be used for pipeline output |
 
 #### Optional arguments:
 
