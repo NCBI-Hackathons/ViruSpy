@@ -1,7 +1,7 @@
 #! /bin/bash
 
-module load megahit
-module load prinseq
+#module load megahit
+#module load prinseq
 
 while getopts i:o:d: option
 do

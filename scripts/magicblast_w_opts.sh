@@ -2,9 +2,9 @@
 
 #Magic-BLAST
 
-module load blast+/2.6.0
-module load samtools/1.5-gcc5.2.0
-module load magic-blast
+#module load blast+/2.6.0
+#module load samtools/1.5-gcc5.2.0
+#module load magic-blast
 
 while getopts f:b:s:o:p: option
 do

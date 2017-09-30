@@ -76,3 +76,7 @@ $megahit -i $magic_dir/$srr.fastq -o $srr -d $mega_dir
 
 ##Run Glimmer##
 $glimmer
+
+##Run RPS-tBLASTn
+
+##Run BUD
