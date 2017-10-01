@@ -4,6 +4,13 @@ use warnings;
 use Getopt::Long;
 use Bio::SeqIO;
 
+# Testing
+# cd t/
+# contig2blastdb.pl -f contigs2.fa -d myblastdb
+#	creates 'temp.fa' (3 seqs) and a blast db (myblastdb) of those sequences (only 1 sequence from contig2 since contig2 is only 210bp long)
+# contig2blastdb.pl -f contigs2.fa -d blastdb.c2 -l 50
+#	creates 'temp.fa' (4 seqs, 50bp each) and a blast db (myblastdb) of those sequences
+
 my $fasta;
 my $dbname;
 my $length = 500;
