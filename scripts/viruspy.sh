@@ -7,17 +7,19 @@ IFS=$'\n\t'
 #Illumina HiSeq
 
 srr=""
+query=""
 outdir=""
 fasta=""
 blastDB=""
 paired=""
 main_dir=$(pwd)
 threads=2
-while getopts f:b:s:o:p:t: option
+while getopts s:q:f:b:d:o:p:t: option
 do
 case "${option}"
 	in
 	s) srr=${OPTARG};;
+	q) query=${OPTARG};;
 	f) fasta=${OPTARG};;
 	b) blastDB=${OPTARG};;
 	d) bud=${OPTARG};;
@@ -26,8 +28,10 @@ case "${option}"
 	t) threads=${OPTARG};;
 esac
 done
-if [[ -z $srr ]]; then
-	echo "No SRR provided, exiting."; exit
+if [[ -z $srr && -z $query ]]; then
+	echo "No SRR (-s) or query fasta file (-q) provided, exiting."; exit
+elif [[ ! -z $srr && ! -z $query ]]; then
+	echo "Cannot use both SRR (-s) and query fasta file (-q) options together, exiting."; exit
 elif [[ -z $outdir ]]; then
 	echo "No output directory provided, exiting.";exit
 elif [[ ! -z $fasta && ! -z $blastDB ]]; then
@@ -38,12 +42,11 @@ fi
 
 echo srr: $srr
 echo outdir: $outdir
-echo blastDB: ${blastDB:-viralrefseq}
-echo paired: ${paired:-true}
+echo blastDB: $blastDB
+echo paired: ${paired}
 
 #srr=SRR1553459
 #virDB=viral.all.1.genomic.fna
-#main_dir=/zfs1/ncbi-workshop/virus-discovery/opts_scripts/
 
 magic_dir=$outdir/data_magicblast
 mega_dir=$outdir/data_megahit
@@ -66,6 +69,8 @@ if [[ ! -z $fasta ]]; then
 	$magic_blast -s $srr -f "../../$fasta" -o $srr.fastq
 elif [[ ! -z $blastDB ]]; then
 	$magic_blast -s $srr -b "../../$blastDB" -o $srr.fastq
+else
+	$magic_blast -s $srr -o $srr.fastq
 fi
 cd $main_dir
 

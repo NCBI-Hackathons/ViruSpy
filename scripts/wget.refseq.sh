@@ -1,16 +1,15 @@
 #!/bin/bash
+set -euo pipefail  # bash strict mode http://redsymbol.net/articles/unofficial-bash-strict-mode/
+IFS=$'\n\t'
 
-echo "Generating Viral RefSeq Database for MAGICBLAST"
+outputfile=$1
 
-output_dir=test
-mkdir $output_dir
-
-cd $output_dir
-wget ftp://ftp.ncbi.nlm.nih.gov/refseq/release/viral/viral.1.1.genomic.fna.gz
-wget ftp://ftp.ncbi.nlm.nih.gov/refseq/release/viral/viral.2.1.genomic.fna.gz
+echo "Downloading Viral RefSeq genomic sequences from NCBI"
+wget -nv ftp://ftp.ncbi.nlm.nih.gov/refseq/release/viral/viral.1.1.genomic.fna.gz
+wget -nv ftp://ftp.ncbi.nlm.nih.gov/refseq/release/viral/viral.2.1.genomic.fna.gz
 gunzip viral.1.1.genomic.fna.gz
 gunzip viral.2.1.genomic.fna.gz
-cat viral.1.1.genomic.fna viral.2.1.genomic.fna > viral.all.1.genomic.fna
+cat viral.1.1.genomic.fna viral.2.1.genomic.fna > $outputfile
 rm viral.1.1.genomic.fna
 rm viral.2.1.genomic.fna
 

@@ -1,4 +1,6 @@
 #!/bin/bash
+set -euo pipefail  # bash strict mode http://redsymbol.net/articles/unofficial-bash-strict-mode/
+IFS=$'\n\t'
 
 #Magic-BLAST
 
@@ -6,6 +8,8 @@
 #module load samtools/1.5-gcc5.2.0
 #module load magic-blast
 
+fasta=""
+blastDB=""
 while getopts f:b:s:o:p: option
 do
 case "${option}"
@@ -24,13 +28,15 @@ if ! [[ -z $fasta ]] && ! [[ -z $blastDB ]]; then
 	echo -e "\nMagicBlast: Script can only accept one ViralDB option (fasta or blastDB).\n"; exit
 elif ! [[ -z $fasta ]]; then
 	echo -e "\nConverting '$fasta' to BlastDB..."
-	makeblastdb -dbtype nucl -in $fasta -out $viralDB
+	makeblastdb -dbtype nucl -in $fasta -parse_seqids -out $viralDB
 elif ! [[ -z $blastDB ]]; then
 	echo -e "\nUsing '$blastDB' as BlastDB.\n"
 	viralDB=$blastDB
 else
-	echo -e "\nUsing default '$viralDB' viral database..."
-	makeblastdb -dbtype nucl -in viral.all.1.genomic.fna -out viral.db
+	echo -e "\nUsing Viral RefSeq genomic sequences from NCBI as default viral database"
+	virussequences=viral.all.1.genomic.fna
+	wget.refseq.sh $virussequences
+	makeblastdb -dbtype nucl -in $virussequences -parse_seqids -out viral.db
 fi
 
 if [[ -z $srr ]]; then
@@ -49,16 +55,16 @@ fi
 #srr=SRR5675673 #amazon river metagenomics
 
 num_threads=2
-#out_file=putative_viral_reads.sam
 out_format=sam
 word_size=20
 percent_id_cuttoff=60
 
 ##This is for paired end reads
-
+# added '-no_unaligned' since new version of MB 1.3 outputs all reads even if unaligned
 magicblast 	-db $viralDB \
 		-sra $srr \
 		-paired \
+		-no_unaligned \
 		-num_threads $num_threads \
 		-out temp_out.sam \
 		-outfmt $out_format \
