@@ -1,3 +1,7 @@
+#!/bin/bash
+SAVEIFS=$IFS
+IFS=$(echo -en "\n\b")
+
 usage() { echo "$0 usage:" && grep " .)\ #" $0; exit 0; }
 [ $# -eq 0 ] && usage
 while getopts ":h:c:s:n:" arg; do
@@ -63,7 +67,7 @@ case $c in
 	echo Split fasta files
 	awk '/^>/ {OUT=substr($0,2) ".fa"}; {print >> OUT; close(OUT)}' ../contigs_assembled_$c.fa
 
-	rename 's/\s.*$//' *
+	for obj in *;do rename 's/\s.*$//' $obj;done;
 
 	echo Perform Extend Match Check
 	for f in *;do ../contig_extend_match.pl -q $f -c ../$contigs -x ../extended_contigs/extended_$f.fasta;done;
@@ -113,7 +117,7 @@ case $c in
 	echo ‘Split fasta files’
 	awk '/^>/ {OUT=substr($0,2) ".fa"}; {print >> OUT; close(OUT)}' ../contigs_assembled_$c.fa
 
-	rename 's/\s.*$//' *
+	for obj in *;do rename 's/\s.*$//' $obj;done;
 
 	echo Perform Extend Match Check
 	for f in *;do ../contig_extend_match.pl -q $f -c ../past_iteration_contigs.fasta -x ../extended_contigs/extended_$f.fasta;done;
