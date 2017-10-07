@@ -1,12 +1,10 @@
 #!/bin/bash
+# Testing - 'cd t/' then run the following
+# magicblast_w_opts.sh -s SRR1553459 -b ebola.genome  ---> 15763 reads
+# magicblast_w_opts.sh -q ebola.50seqs.fa -b ebola.genome ---> 47 reads
+# magicblast_w_opts.sh -q ebola.50seqs.fa -f GCF_000848505.1_ViralProj14703_genomic.fna --> 47 reads
 set -euo pipefail  # bash strict mode http://redsymbol.net/articles/unofficial-bash-strict-mode/
 IFS=$'\n\t'
-
-#Magic-BLAST
-
-#module load blast+/2.6.0
-#module load samtools/1.5-gcc5.2.0
-#module load magic-blast
 
 srr=""
 query=""
