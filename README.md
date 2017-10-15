@@ -71,6 +71,8 @@ Required software
 + [MEGAHIT](https://github.com/voutcn/megahit)
 + [Glimmer3](https://ccb.jhu.edu/software/glimmer/)
 
+The ViruSpy `/scripts/` directory should be added to the user's PATH.
+
 ## <a name="usage"></a><a name="quickstart"></a>ViruSpy Usage
 
 #### Example usage
